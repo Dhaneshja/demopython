@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title> 
+    <script>
+        function validateForm() {
+            var subject1Value = document.getElementById("subject1").value;
+            var subject2Value = document.getElementById("subject2").value;
+            var subject3Value = document.getElementById("subject3").value;
+
+            // Function to check if the value is a valid number and within the valid range
+            function isValidNumber(value) {
+                return !isNaN(value) && value >= 0 && value <= 100;
+            }
+
+            // Check Subject 1
+            if (!isValidNumber(subject1Value)) {
+                alert("Subject 1 must be a valid number between 0 and 100.");
+                return false;
+            }
+
+            // Check Subject 2
+            if (!isValidNumber(subject2Value)) {
+                alert("Subject 2 must be a valid number between 0 and 100.");
+                return false;
+            }
+
+            // Check Subject 3
+            if (!isValidNumber(subject3Value)) {
+                alert("Subject 3 must be a valid number between 0 and 100.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Add Student</h1>
+    <form method="post" action="{{ url_for('add_student') }}" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" required><br>
+        <label for="subject1">Subject 1:</label>
+        <input type="number" id="subject1" name="subject1" required><br>
+        <label for="subject2">Subject 2:</label>
+        <input type="number" id="subject2" name="subject2" required><br>
+        <label for="subject3">Subject 3:</label>
+        <input type="number" id="subject3" name="subject3" required><br>
+        <input type="submit" value="Add Student">
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
+
+
+
+     

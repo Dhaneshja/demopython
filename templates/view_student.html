@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student</title>
+</head>
+<body>
+    <h1>View Student</h1>
+    {% if student %}
+        <p>ID: {{ student[0] }}</p>
+        <p>Name: {{ student[1] }}</p>
+        <p>Class: {{ student[2] }}</p>
+        <p>Subject 1: {{ student[3] }}</p>
+        <p>Subject 2: {{ student[4] }}</p>
+        <p>Subject 3: {{ student[5] }}</p>
+        <p>Percentage:{{(student[3]+ student[4]+student[5])/3}}   
+        <img src="{{ url_for('static', filename='qrcodes/' + student[0]|string + '.png') 
+}}" alt="QR Code">
+        {% if 0 < (student[3] + student[4] + student[5]) / 3 < 40 %}
+            <p>Category 4</p>
+        {% elif 40 <= (student[3] + student[4] + student[5]) / 3 < 70 %}
+            <p>Category 3</p>
+        {% elif 70 <= (student[3] + student[4] + student[5]) / 3 <= 100 %}
+            <p>Category 1</p>
+        {% endif %}
+    {% else %}
+        <p>Student not found</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
+

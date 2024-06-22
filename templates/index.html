@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Database</title>
+</head>
+<body>
+    <h1>Student Database</h1>
+
+    <script>
+        function promptForPassword() {
+            var password = prompt("Please enter the password:");
+
+            // You can compare the entered password with the correct one here
+            if (password === "Dhanesh@123") {
+                window.location.href = "{{ url_for('add_student') }}";
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+    </script>
+
+    <a href="#" onclick="promptForPassword()">Add Student</a>
+</body>
+</html>
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title> 
+</head>
+<body>
+    <h1>Delete Student</h1>
+    <p>Are you sure you want to delete this student's data?</p>
+    <p><strong>Name:</strong> {{ student['name'] }}</p>
+    <p><strong>Class:</strong> {{ student['class'] }}</p>
+    <p><strong>Subject 1:</strong> {{ student['subject1'] }}</p>
+    <p><strong>Subject 2:</strong> {{ student['subject2'] }}</p>
+    <p><strong>Subject 3:</strong> {{ student['subject3'] }}</p>
+
+    <form method="post" action="{{ url_for('delete_student_route', student_id=student['id']) }}">
+        <input type="submit" value="Delete">
+    </form>
+
+    <a href="{{ url_for('index') }}">Cancel</a>
+</body>
+</html>
